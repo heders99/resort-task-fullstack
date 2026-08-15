@@ -1,0 +1,8 @@
+{
+  "name": "resort-map",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A simple interactive resort map and cabana booking app",
+  "scripts": { "start": "node server.js", "test": "node tests/run-tests.js" },
+  "dependencies": { "express": "^5.1.0" }
+}
