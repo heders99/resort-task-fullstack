@@ -42,6 +42,25 @@
     </div>
   </main>
 
+  <section id="mobileCabanaSheet" class="mobile-cabana-sheet" aria-label="Selected cabana" hidden>
+    <div class="mobile-sheet-handle" aria-hidden="true"></div>
+    <div class="mobile-cabana-heading">
+      <h2 id="mobileSelectedCabana">Cabana</h2>
+      <span class="mobile-availability-badge">Available</span>
+    </div>
+    <div class="mobile-cabana-details">
+      <span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-9h16v9M7 11V7h4v4M13 11V4h4v7M2 20h20M8 15h2M14 15h2" /></svg>
+        Front Row
+      </span>
+      <span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8c3.2-3 6.2 3 9.2 0S18.1 5 21 8M3 13c3.2-3 6.2 3 9.2 0s5.9-3 8.8 0M3 18c3.2-3 6.2 3 9.2 0s5.9-3 8.8 0" /></svg>
+        Pool View
+      </span>
+    </div>
+    <button id="mobileBookButton" class="mobile-book-button" type="button">Book now</button>
+  </section>
+
   <!-- Bootstrap modal stays at the top level for reliable fixed positioning. -->
   <div class="modal fade booking-modal" id="bookingModal" tabindex="-1" aria-labelledby="booking-title" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable booking-modal-dialog">
@@ -65,8 +84,7 @@
               <input class="form-control form-control-lg" id="guest-name" name="guestName" autocomplete="name" placeholder="For example, Alice Smith" required>
             </div>
             <div class="col-12 d-flex justify-content-end gap-3 align-items-center mt-4">
-              <button class="btn btn-link modal-cancel" type="button" data-bs-dismiss="modal">Cancel</button>
-              <button class="btn btn-primary btn-lg" type="submit">Confirm booking</button>
+              <button class="btn btn-primary btn-lg booking-submit" type="submit">Confirm booking</button>
             </div>
           </form>
           <div id="form-error" class="alert alert-danger mt-4 mb-0" role="alert" hidden></div>

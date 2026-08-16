@@ -6,6 +6,7 @@
   --material-line: #cfcfcf;
   --material-light: #eeeeee;
   --material-white: #ffffff;
+  --resort-teal: #45a8aa;
   --bs-primary: var(--material-black);
   --bs-primary-rgb: 17, 17, 17;
   --bs-body-font-family: Arial, Helvetica, sans-serif;
@@ -29,7 +30,7 @@ body { min-width: 320px; overflow-x: hidden; color: var(--material-black); backg
 #message { max-width: 100%; margin: 1rem auto 0; border: 1px solid var(--material-black); border-radius: 0; }
 .map-frame { max-width: 100%; margin: 1rem auto 0; padding: .75rem; border: 2px solid var(--material-black); border-radius: 0; background: var(--material-white); }
 .map-scroll { overflow-x: auto; overscroll-behavior-inline: contain; }
-.map { display: grid; grid-template-columns: repeat(var(--map-columns), minmax(22px, 1fr)); width: 100%; min-width: 620px; overflow: hidden; background: var(--material-light); }
+.map { display: grid; grid-template-columns: repeat(var(--map-columns), minmax(22px, 1fr)); width: 100%; min-width: 640px; overflow: hidden; background: var(--material-light); }
 .tile { position: relative; min-width: 0; aspect-ratio: 1; border: 1px solid #ffffff; background-position: center; background-repeat: no-repeat; background-size: cover; overflow: hidden; }
 .tile::before { content: ''; position: absolute; inset: 0; z-index: 0; background: url('/assets/parchmentBasic.png') var(--ground-position, left top) / 200% 200% no-repeat; pointer-events: none; }
 .tile-art { position: absolute; inset: 0; z-index: 1; background-position: center; background-repeat: no-repeat; pointer-events: none; }
@@ -61,21 +62,48 @@ body { min-width: 320px; overflow-x: hidden; color: var(--material-black); backg
 .form-control { border-color: var(--material-black); border-radius: 0; color: var(--material-black); background: var(--material-white); }
 .form-control:focus { border-color: var(--material-black); box-shadow: 0 0 0 .15rem #bdbdbd; }
 .btn-primary { --bs-btn-color: var(--material-white); --bs-btn-bg: var(--material-black); --bs-btn-border-color: var(--material-black); --bs-btn-hover-color: var(--material-black); --bs-btn-hover-bg: var(--material-white); --bs-btn-hover-border-color: var(--material-black); border-radius: 0; font-weight: 700; }
+.booking-modal .btn-primary { width: 100%; padding: .68rem 1rem; border: 0; border-radius: .45rem; --bs-btn-color: var(--material-white); --bs-btn-bg: var(--resort-teal); --bs-btn-border-color: var(--resort-teal); --bs-btn-hover-color: var(--material-white); --bs-btn-hover-bg: #328d90; --bs-btn-hover-border-color: #328d90; font-size: .9rem; font-weight: 700; }
 .modal-cancel { color: var(--material-dark); text-decoration: underline; text-underline-offset: .2rem; }
 .modal-cancel:hover { color: var(--material-black); }
+.mobile-cabana-sheet { display: none; }
 @media (max-width: 767.98px) {
-  /* On phones, use the available width and keep the map horizontally scrollable. */
-  .map-section { width: 100%; padding-top: 1.5rem; }
-  .section-caption { margin-left: 0; }
-  .map-frame { margin-right: -.75rem; margin-left: -.75rem; border-right: 0; border-left: 0; padding: .4rem; }
-  .map { min-width: 640px; }
-  .legend { padding-right: .5rem; padding-left: .5rem; }
-  .booking-modal-dialog { margin: .5rem auto; }
+  body { background: var(--material-white); }
+  .map-section { width: 100%; padding: .75rem .75rem 2rem; }
+  .section-intro { margin: 0; padding: .1rem .25rem .75rem; }
+  .section-intro .col-lg-7, .section-intro .col-lg-5 { padding-right: 0; padding-left: 0; }
+  .section-intro .col-lg-5 { padding-top: 1rem; text-align: center !important; }
+  .title-group { gap: .65rem; }
+  .site-logo { flex-basis: 2rem; width: 2rem; height: 2rem; }
+  .section-intro h1 { font-size: 1.08rem; letter-spacing: -.03em; line-height: 1; }
+  .eyebrow { display: none; }
+  .availability { margin-bottom: .3rem; font-size: .95rem; }
+  .section-caption { max-width: 255px; margin: 0 auto; font-size: .75rem; line-height: 1.35; }
+  .map-frame { width: calc(100% + 1.5rem); max-width: none; margin: 0 -.75rem; padding: .3rem 0; border: 0; background: transparent; }
+  .map-scroll { overflow: visible; }
+  .map { width: 100%; min-width: 100%; grid-template-columns: repeat(var(--map-columns), minmax(0, 1fr)); overflow: visible; }
+  .tile { border-color: rgba(255, 255, 255, .85); }
+  .legend { display: none; }
+  #message { margin: .5rem 0; }
+  .mobile-cabana-sheet { position: fixed; right: .75rem; bottom: .75rem; left: .75rem; z-index: 1035; display: block; padding: .95rem 1rem 1rem; border-radius: 1rem; background: var(--material-white); box-shadow: 0 8px 30px rgba(55, 44, 27, .22); }
+  .mobile-sheet-handle { width: 2.2rem; height: .2rem; margin: -.4rem auto .8rem; border-radius: 1rem; background: #d8d8d8; }
+  .mobile-cabana-heading { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+  .mobile-cabana-heading h2 { margin: 0; font-size: 1.05rem; font-weight: 700; letter-spacing: -.02em; }
+  .mobile-availability-badge { padding: .28rem .55rem; border-radius: .45rem; color: #25837e; background: #e2f3ed; font-size: .7rem; font-weight: 700; }
+  .mobile-cabana-details { display: flex; gap: 1.1rem; margin: .8rem 0 1rem; color: #616161; font-size: .72rem; }
+  .mobile-cabana-details span { display: inline-flex; align-items: center; gap: .35rem; white-space: nowrap; }
+  .mobile-cabana-details svg { width: .95rem; height: .95rem; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.6; }
+  .mobile-book-button { width: 100%; padding: .68rem 1rem; border: 0; border-radius: .45rem; color: var(--material-white); background: var(--resort-teal); font-size: .9rem; font-weight: 700; }
+  .mobile-book-button:focus-visible { outline: 3px solid rgba(69, 168, 170, .35); outline-offset: 2px; }
+  .booking-modal-dialog { align-items: flex-end; min-height: 100%; margin: auto .75rem 0; max-width: none; }
+  .booking-modal.fade .booking-modal-dialog { transform: translateY(100%); transition: transform .3s ease-out; }
+  .booking-modal.show .booking-modal-dialog { transform: translateY(0); }
+  .booking-modal .modal-content { border: 0; border-radius: 1rem 1rem 0 0; }
+  .booking-modal .modal-header { border-bottom: 1px solid #e5e5e5; border-radius: 1rem 1rem 0 0; }
 }
 @media (max-width: 575.98px) {
   .title-group { align-items: center; gap: .75rem; }
-  .site-logo { flex-basis: 40px; width: 40px; height: 40px; }
-  .section-intro h1 { font-size: clamp(2.5rem, 15vw, 4.5rem); }
+  .site-logo { flex-basis: 2rem; width: 2rem; height: 2rem; }
+  .section-intro h1 { font-size: 1.08rem; }
   .availability { font-size: .95rem; }
   .booking-modal .modal-header, .booking-modal .modal-body { padding: 1rem; }
   .booking-modal .modal-title { font-size: 1.55rem; }

@@ -7,6 +7,9 @@ const bookingForm = document.querySelector('#booking-form');
 const formErrorElement = document.querySelector('#form-error');
 const selectedCabanaLabelElement = document.querySelector('#selected-cabana-label');
 const selectedCabanaElement = document.querySelector('#selected-cabana');
+const mobileCabanaSheet = document.querySelector('#mobileCabanaSheet');
+const mobileSelectedCabanaElement = document.querySelector('#mobileSelectedCabana');
+const mobileBookButton = document.querySelector('#mobileBookButton');
 const bookingModal = bootstrap.Modal.getOrCreateInstance(bookingModalElement);
 let selectedCabanaId = null;
 
@@ -43,6 +46,7 @@ function showMessage(text, kind = 'success') {
 
 function closeBookingModal() {
   bookingModal.hide();
+  closeMobileCabanaSheet();
   selectedCabanaId = null;
   selectedCabanaLabelElement.textContent = '';
   selectedCabanaElement.textContent = 'Check the guest details before confirming.';
@@ -50,11 +54,24 @@ function closeBookingModal() {
   bookingForm.reset();
 }
 
+function isMobileLayout() {
+  return window.matchMedia('(max-width: 767.98px)').matches;
+}
+
+function closeMobileCabanaSheet() {
+  mobileCabanaSheet.hidden = true;
+}
+
 function openAvailableCabana(cabanaId) {
   selectedCabanaId = cabanaId;
   selectedCabanaLabelElement.textContent = cabanaId;
   selectedCabanaElement.textContent = 'Check the guest details before confirming.';
   formErrorElement.hidden = true;
+  mobileSelectedCabanaElement.textContent = `Cabana ${cabanaId.replace(/^W-/, '')}`;
+  if (isMobileLayout()) {
+    mobileCabanaSheet.hidden = false;
+    return;
+  }
   bookingModal.show();
 }
 
@@ -128,6 +145,11 @@ bookingModalElement.addEventListener('hidden.bs.modal', () => {
   bookingForm.reset();
 });
 
+mobileBookButton.addEventListener('click', () => {
+  closeMobileCabanaSheet();
+  bookingModal.show();
+});
+
 bookingForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   formErrorElement.hidden = true;
@@ -143,6 +165,7 @@ bookingForm.addEventListener('submit', async (event) => {
     if (!response.ok) throw new Error(result.error || 'The booking could not be completed.');
     renderMap(result.map);
     bookingModal.hide();
+    closeMobileCabanaSheet();
     showMessage(result.message, 'success');
   } catch (error) {
     formErrorElement.textContent = error.message;
