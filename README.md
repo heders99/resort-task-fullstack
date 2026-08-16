@@ -1,5 +1,7 @@
 # Resort Map
 
+![Resort map — running solution](mockup.png)
+
 Interactive resort map and cabana booking test project built with Express, Vanilla JavaScript, and an MVC-like architecture with a dedicated Service Layer (`lib/resort.js`).
 The project uses a small Express backend and a Vanilla JavaScript frontend. The browser receives application data through a REST API and does not read the map or guest files directly.
 
