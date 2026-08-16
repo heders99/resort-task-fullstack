@@ -18,8 +18,10 @@
 [hidden], #message[hidden], #form-error[hidden] { display: none !important; }
 html { scroll-behavior: smooth; }
 body { min-width: 320px; overflow-x: hidden; color: var(--material-black); background: var(--material-white); font-family: Arial, Helvetica, sans-serif; }
+.resort-background { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: .1; pointer-events: none; }
+.top-page-gradient { position: fixed; top: 0; right: 0; left: 0; z-index: 0; height: 260px; background: linear-gradient(to bottom, rgba(255, 255, 255, .98) 0%, rgba(255, 255, 255, .9) 35%, rgba(255, 255, 255, 0) 100%); pointer-events: none; }
 /* Keep the desktop composition compact, like the reference screenshot. */
-.map-section { width: min(80vw, 1100px); margin: 0 auto; padding-top: clamp(2rem, 2vw, 5rem); padding-bottom: 4rem; }
+.map-section { position: relative; z-index: 1; width: min(80vw, 1100px); margin: 0 auto; padding-top: clamp(2rem, 2vw, 5rem); padding-bottom: 4rem; }
 .section-intro { max-width: 100%; margin: 0 auto; padding-bottom: 1.5rem; }
 .title-group { display: flex; align-items: center; gap: 1rem; }
 .site-logo { display: block; flex: 0 0 48px; width: 48px; height: 48px; object-fit: contain; }
@@ -68,6 +70,7 @@ body { min-width: 320px; overflow-x: hidden; color: var(--material-black); backg
 .mobile-cabana-sheet { display: none; }
 @media (max-width: 767.98px) {
   body { background: var(--material-white); }
+  .top-page-gradient { height: 230px; }
   .map-section { width: 100%; padding: .75rem .75rem 2rem; }
   .section-intro { margin: 0; padding: .1rem .25rem .75rem; }
   .section-intro .col-lg-7, .section-intro .col-lg-5 { padding-right: 0; padding-left: 0; }
